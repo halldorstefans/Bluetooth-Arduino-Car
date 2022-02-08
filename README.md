@@ -52,7 +52,7 @@ Project for a smartphone-controlled Arduino car with the Adafruit Bluefruit LE U
 <!-- GETTING STARTED -->
 ## Setup
 
-See [blog post](www.engineeracar.com/bluetooth-arduino-car/).
+See [blog post](https://www.engineeracar.com/bluetooth-arduino-car/).
 
 <!-- LICENSE -->
 ## License
