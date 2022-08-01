@@ -72,8 +72,8 @@ Adafruit_BluefruitLE_UART ble(bluefruitSS, BLUEFRUIT_UART_MODE_PIN,
 Servo servoSteering;
 
 // Configure the motor driver.
-CytronMD motor1(DRIVE_MOTOR_MODE, 1A_PIN, 1B_PIN);
-CytronMD motor2(DRIVE_MOTOR_MODE, 2A_PIN, 2B_PIN);
+CytronMD motor1(DRIVE_MOTOR_MODE, PIN_1A, PIN_1B);
+CytronMD motor2(DRIVE_MOTOR_MODE, PIN_2A, PIN_2B);
 
 // A small helper
 void error(const __FlashStringHelper*err) {
@@ -175,14 +175,14 @@ void robotStop()
 
 void robotForward()
 {
-  motor2.setSpeed(100);
-  motor1.setSpeed(100);
+  motor2.setSpeed(250);
+  motor1.setSpeed(250);
 }
 
 void robotReverse()
 {
-  motor1.setSpeed(-100);
-  motor2.setSpeed(-100);
+  motor1.setSpeed(-50);
+  motor2.setSpeed(-50);
 }
 
 /**************************************************************************/
@@ -211,7 +211,7 @@ void loop(void)
         servoSteering.write(45);
       }
       if (buttnum == 8) {
-        servoSteering.write(120);
+        servoSteering.write(125);
       }
       if (buttnum == 5) {
         robotForward();
