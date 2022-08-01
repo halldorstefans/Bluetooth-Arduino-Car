@@ -37,14 +37,13 @@ Smartphone Controlled Arduino Car via Bluetooth
 <!-- ABOUT THE PROJECT -->
 ## Bluetooth-Arduino-Car
 
-[![Bluetooth Arduino Car with Front-Wheel Steering](bluetooth_car.jpg)
+![Bluetooth Arduino Car with Four Wheels](bluetooth_car.jpg)
 
 Project for a smartphone-controlled Arduino car with the Adafruit Bluefruit LE UART Friend.
 
 ### Built With
 
 * [Arduino](https://www.arduino.cc/)
-* [Mini 3-Layer Round Robot Chassis Kit](https://thepihut.com/products/adafruit-mini-3-layer-round-robot-chassis-kit-2wd-with-dc-motors)
 * [Adafruit Bluefruit LE UART Friend](https://learn.adafruit.com/introducing-the-adafruit-bluefruit-le-uart-friend)
 * [Maker Drive](https://www.cytron.io/p-maker-drive-simplifying-h-bridge-motor-driver-for-beginner)
 
