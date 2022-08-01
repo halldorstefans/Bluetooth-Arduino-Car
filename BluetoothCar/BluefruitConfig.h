@@ -40,7 +40,7 @@
 
 // MAKER DRIVE MOTOR SETTINGS
 #define DRIVE_MOTOR_MODE              PWM_DIR
-#define 1A_PIN                        11
-#define 1B_PIN                        10
-#define 2A_PIN                        3
-#define 2B_PIN                        9
+#define PIN_1A                        11
+#define PIN_1B                        10
+#define PIN_2A                        3
+#define PIN_2B                        9
