@@ -37,7 +37,7 @@ Smartphone Controlled Arduino Car via Bluetooth
 <!-- ABOUT THE PROJECT -->
 ## Bluetooth-Arduino-Car
 
-![Bluetooth Arduino Car with Four Wheels](bluetooth_car.jpg)
+![Bluetooth Arduino Car with Four Wheels](bluetooth_dist_car.jpg)
 
 Project for a smartphone-controlled Arduino car with the Adafruit Bluefruit LE UART Friend.
 
