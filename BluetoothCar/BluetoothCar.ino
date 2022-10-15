@@ -72,8 +72,7 @@ Adafruit_BluefruitLE_UART ble(bluefruitSS, BLUEFRUIT_UART_MODE_PIN,
 Servo servoSteering;
 
 // Configure the motor driver.
-CytronMD motor1(DRIVE_MOTOR_MODE, PIN_1A, PIN_1B);
-CytronMD motor2(DRIVE_MOTOR_MODE, PIN_2A, PIN_2B);
+CytronMD motor(DRIVE_MOTOR_MODE, PIN_2A, PIN_2B);
 
 // A small helper
 void error(const __FlashStringHelper*err) {
@@ -89,6 +88,10 @@ void printHex(const uint8_t * data, const uint32_t numBytes);
 // the packet buffer
 extern uint8_t packetbuffer[];
 
+// Distance sensor variables
+long duration;  // Sound wave travel duration
+int distance;   // Distance measurement
+bool isBacking; // Detect if the car is backing
 
 /**************************************************************************/
 /*!
@@ -123,7 +126,7 @@ void setup(void)
     }
   }
 
-  // Attach the Servo variable to a pin:
+  /* Attach the Servo variable to a pin: */
   servoSteering.attach(SERVO_PIN);
   servoSteering.write(DEFAULT_ANGLE);
 
@@ -161,6 +164,9 @@ void setup(void)
 
   Serial.println(F("******************************"));
 
+  isBacking = false;
+  pinMode(TRIG_PIN, OUTPUT);
+  pinMode(ECHO_PIN, INPUT);
 }
 /**************************************************************************/
 /*!
@@ -169,20 +175,17 @@ void setup(void)
 /**************************************************************************/
 void robotStop()
 {
-  motor1.setSpeed(0);
-  motor2.setSpeed(0);
+  motor.setSpeed(0);
 }
 
 void robotForward()
 {
-  motor2.setSpeed(250);
-  motor1.setSpeed(250);
+  motor.setSpeed(250);
 }
 
 void robotReverse()
 {
-  motor1.setSpeed(-50);
-  motor2.setSpeed(-50);
+  motor.setSpeed(-50);
 }
 
 /**************************************************************************/
@@ -192,14 +195,36 @@ void robotReverse()
 /**************************************************************************/
 void loop(void)
 {
+  // Clear the TRIG_PIN by setting it LOW:
+  digitalWrite(TRIG_PIN, LOW);
+  delayMicroseconds(5);
+
+  // Trigger the sensor by setting the TRIG_PIN high for 10 microseconds:
+  digitalWrite(TRIG_PIN, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TRIG_PIN, LOW);
+
+  // Read the echoPin, pulseIn() returns the duration (length of the pulse) in microseconds:
+  duration = pulseIn(ECHO_PIN, HIGH);
+  // Calculate the distance:
+  distance = duration * 0.034 / 2;
+
+  // Print the distance on the Serial Monitor (Ctrl+Shift+M):
+  Serial.print("Distance = ");
+  Serial.print(distance);
+  Serial.println(" cm");
+
+  if (distance < 50 && isBacking == false) {
+    robotStop();
+  }
+
   /* Wait for new data to arrive */
   uint8_t len = readPacket(&ble, BLE_READPACKET_TIMEOUT);
-  //if (len == 0) continue;
+  if (len == 0) return;
 
   /* Got a packet! */
   // printHex(packetbuffer, len);
-
-
+ 
   // Buttons
   if (packetbuffer[1] == 'B') {
     uint8_t buttnum = packetbuffer[2] - '0';
@@ -216,7 +241,8 @@ void loop(void)
       if (buttnum == 5) {
         robotForward();
       }
-      if (buttnum == 6) {        
+      if (buttnum == 6) {
+        isBacking = true;
         robotReverse();
       }
     } else {
@@ -226,6 +252,7 @@ void loop(void)
       }
 
       if (buttnum == 5 || buttnum == 6) {
+        isBacking = false;
         robotStop();
       }
     }
