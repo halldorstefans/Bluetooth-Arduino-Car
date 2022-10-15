@@ -4,7 +4,7 @@
 // ----------------------------------------------------------------------------------------------
 #define BUFSIZE                        128   // Size of the read buffer for incoming data
 #define VERBOSE_MODE                   true  // If set to 'true' enables debug output
-#define BLE_READPACKET_TIMEOUT         1000   // Timeout in ms waiting to read a response
+#define BLE_READPACKET_TIMEOUT         150   // Timeout in ms waiting to read a response
 
 
 // SOFTWARE UART SETTINGS
@@ -38,9 +38,11 @@
 #define SERVO_PIN                     6
 #define DEFAULT_ANGLE                 90
 
+// DISTANCE SENSOR SETTINGS
+#define TRIG_PIN                      10
+#define ECHO_PIN                      11
+
 // MAKER DRIVE MOTOR SETTINGS
 #define DRIVE_MOTOR_MODE              PWM_DIR
-#define PIN_1A                        11
-#define PIN_1B                        10
 #define PIN_2A                        3
 #define PIN_2B                        9
