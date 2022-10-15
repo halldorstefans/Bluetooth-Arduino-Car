@@ -46,12 +46,12 @@ Project for a smartphone-controlled Arduino car with the Adafruit Bluefruit LE U
 * [Arduino](https://www.arduino.cc/)
 * [Adafruit Bluefruit LE UART Friend](https://learn.adafruit.com/introducing-the-adafruit-bluefruit-le-uart-friend)
 * [Maker Drive](https://www.cytron.io/p-maker-drive-simplifying-h-bridge-motor-driver-for-beginner)
-
+* [Ultrasonic Distance Sensor (HC-SR04)](https://www.osepp.com/electronic-modules/sensor-modules/62-osepp-ultrasonic-sensor-module)
 
 <!-- GETTING STARTED -->
 ## Setup
 
-See [blog post](https://www.engineeracar.com/bluetooth-arduino-car/).
+See articles about how to [build a smartphone-controlled Arduino car with the Adafruit Bluefruit LE UART Friend](https://www.engineeracar.com/bluetooth-arduino-car/) and [add a HC-SR04 Ultrasonic Sonar Distance Sensor to your robot car project](www.engineeracar.com/hc-sr04-distance-sensor/ ).
 
 <!-- LICENSE -->
 ## License
@@ -71,3 +71,4 @@ Project Link: [https://github.com/halldorstefans/Bluetooth-Arduino-Car](https://
 * [Adafruit Bluefruit library](https://github.com/adafruit/Adafruit_BluefruitLE_nRF51)
 * [Cytron Motor Driver library](https://github.com/CytronTechnologies/CytronMotorDriver)
 * [Arduino Forum](https://forum.arduino.cc/t/servo-and-dc-motor-working-at-the-same-time/341985)
+* [Arduino Project Hub - abdularbi17](https://create.arduino.cc/projecthub/abdularbi17/ultrasonic-sensor-hc-sr04-with-arduino-tutorial-327ff6)
